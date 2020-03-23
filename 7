@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Tree
+{
+public:
+	double age;
+	double height;
+};
+
+class FruitTree : public virtual Tree
+{
+public:
+	string typeOfFetus;
+};
+
+class DeciduousTree : public virtual Tree
+{
+public:
+	double sizeOfLeaves;
+};
+
+class AppleTree : public virtual FruitTree, public virtual DeciduousTree
+{
+public:
+	string varietyOfApples;
+	AppleTree(double age1, double height1, string type, double size, string var) {
+		age = age1;
+		height = height1;
+		typeOfFetus = type;
+		sizeOfLeaves = size;
+		varietyOfApples = var;
+	}
+
+	void print() {
+		cout << "Age of tree: " << age << " years" << endl;
+		cout << "Height of tree: " << height << " m." << endl;
+		cout << "Type of Fetus: " << typeOfFetus << endl;
+		cout << "Size of leaves: " << sizeOfLeaves << " cm" << endl;
+		cout << "Variety of apples: " << varietyOfApples << endl;
+	}
+};
+
+
+int main()
+{
+	AppleTree domestic(12, 15, "Apple", 5, "Common green apples");
+	domestic.print();
+
+	return 0;
+}
