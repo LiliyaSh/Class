@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class derevya
+{
+public:
+    double age;
+    string title;
+    double height;
+    
+    void print()
+    {
+        cout << title << endl;
+        cout << "vozrast (v godah): " << age << endl;
+        cout << "visota: " << height << " m" << endl;
+        cout << "__________________________________________" << endl;
+    }
+};
+int main()
+{
+    derevya plodovie;
+    plodovie.title = "yablonia";
+    plodovie.age = 12;
+    plodovie.height = 5;
+    plodovie.print();
+
+    derevya decorativnie;
+    decorativnie.title = "magnoliya";
+    decorativnie.age = 40;
+    decorativnie.height = 15;
+    decorativnie.print();
+    return 0;
+}
