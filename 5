@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class derevya
+{
+private:
+    double age;
+    string title;
+    double height;
+public:
+    static int count;
+
+    derevya(double age1, string title1, double height1) {
+        this -> age = age1;
+        this -> title = title1;
+        this -> height = height1;
+        count++;
+
+        print();
+    }
+    
+    void print()
+    {
+        cout << title << endl;
+        cout << "vozrast (v godah): " << age << endl;
+        cout << "visota: " << height << " m" << endl;
+        cout << "__________________________________________" << endl;
+    }
+
+    ~derevya() {
+        cout << "Class is closed" << endl;
+    }
+    friend void ChangeVozrast(derevya& age);
+};
+
+int derevya::count = 0;
+
+void ChangeVozrast(derevya &age1) {
+    age1.age += 1;
+}
+
+int main()
+{
+    derevya plodovie(12, "Abrikos", 6);
+    ChangeVozrast(plodovie);
+    plodovie.print();
+
+    derevya decorativnie(50, "Fikus", 3);
+
+    cout << "Kollichestvo derevyev: " << derevya::count << endl;
+    return 0;
+}
