@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class derevya
+{
+private:
+    double age;
+    string title;
+    double height;
+public:
+    static int count;
+
+    derevya(double age1, string title1, double height1) {
+        this -> age = age1;
+        this -> title = title1;
+        this -> height = height1;
+        count++;
+
+        print();
+    }
+    
+    void print()
+    {
+        cout << title << endl;
+        cout << "vozrast (v godah): " << age << endl;
+        cout << "visota: " << height << " m" << endl;
+        cout << "__________________________________________" << endl;
+    }
+
+    bool operator ==(const derevya & other) {
+        return this->age == other.age && this->height == other.height && this->title == other.title;
+    }
+
+    ~derevya() {
+        cout << "Class is closed" << endl;
+    }
+    friend void changeVozrast(derevya& age);
+};
+
+int derevya::count = 0;
+
+void changeVozrast(derevya &age1) {
+    age1.age += 1;
+}
+
+int main()
+{
+    derevya plodovie1(12, "Abrikos", 6);
+
+    derevya plodovie2(13, "Abrikos", 6);
+    changeVozrast(plodovie1);
+    bool res = plodovie1 == plodovie2;
+    if (res)
+        cout << "derevya odinakovie\n";
+    else
+        cout << "derevya raznie\n";
+
+    derevya decorativnie(50, "Fikus", 3);
+
+    cout << "Kollichestvo derevyev: " << derevya::count << endl;
+    return 0;
+}
