@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Tree {
+public:
+	string name;
+	virtual void breedingMethod() = 0;
+};
+
+class FruitTree: public Tree {
+public:
+	void breedingMethod() override {
+		cout << " by seeds or cuttings\n";
+	}
+};
+
+class AppleTree : public FruitTree {
+public:
+	void breedingMethod() override {
+		cout << " by seeds\n";
+	}
+};
+
+class PearTree : public FruitTree {
+public:
+	void breedingMethod() override {
+		cout << " by cuttings\n";
+	}
+};
+
+class FlowerTree : public Tree {
+public:
+	void breedingMethod() override {
+		cout << " by roots or inoculation\n";
+	}
+};
+
+class Lilac: public FlowerTree {
+public:
+	void breedingMethod() override {
+		cout << " by inoculation\n";
+	}
+};
+
+class Human {
+public:
+	void breedingMethod(Tree* tree) {
+		cout << "breeding method:";
+		tree->breedingMethod();
+	}
+};
+
+int main() {
+	AppleTree appleTree;
+	Human bob;
+	appleTree.name = "Apple tree";
+	cout << appleTree.name << endl;
+	bob.breedingMethod(&appleTree);
+
+	Lilac lilac;
+	lilac.name = "lilac";
+	cout << lilac.name << endl;
+	bob.breedingMethod(&lilac);
+	return 0;
+}
