@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Tree {
+public:
+	void getInfo() {
+		for (int i = 0; i < numOfBranches; i++)
+			cout << "Branch #" << i + 1 << ": " << branches[i].numOfLeavesAndFruits() << endl;
+	}
+private:
+	class Branch {
+	public:
+		Branch(int numOfLeaves, int numOfFruits) {
+			this->numOfLeaves = numOfLeaves;
+			this->numOfFruits = numOfFruits;
+		}
+		string numOfLeavesAndFruits(){
+			return "Number of leaves = " + to_string(numOfLeaves) + ", Number of fruits = " + to_string(numOfFruits);
+		}
+	private:
+		int numOfLeaves;
+		int numOfFruits;
+	};
+
+	static const int numOfBranches = 7;
+
+	Branch branches[numOfBranches]{
+		Branch(42, 5),
+		Branch(46, 11),
+		Branch(33, 6),
+		Branch(108, 20),
+		Branch(54, 4),
+		Branch(102, 15),
+		Branch(72, 6),
+	};
+};
+
+int main() {
+	Tree tree;
+	tree.getInfo();
+	return 0;
+}
